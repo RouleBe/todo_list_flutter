@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
 
 class SignUp_Screen extends StatefulWidget {
-  const SignUp_Screen({super.key});
+  final VoidCallback show;
+  SignUp_Screen(this.show, {super.key});
 
   @override
   State<SignUp_Screen> createState() => _SignUp_ScreenState();

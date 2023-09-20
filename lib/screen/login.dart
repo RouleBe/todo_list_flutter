@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
 
 class LogIN_Screen extends StatefulWidget {
-  const LogIN_Screen({super.key});
+  final VoidCallback show;
+  LogIN_Screen(this.show,{super.key});
 
   @override
   State<LogIN_Screen> createState() => _LogIN_ScreenState();
