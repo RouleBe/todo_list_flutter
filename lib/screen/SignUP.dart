@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
 
-class LogIN_Screen extends StatefulWidget {
-  const LogIN_Screen({super.key});
+class SignUp_Screen extends StatefulWidget {
+  const SignUp_Screen({super.key});
 
   @override
-  State<LogIN_Screen> createState() => _LogIN_ScreenState();
+  State<SignUp_Screen> createState() => _SignUp_ScreenState();
 }
 
-class _LogIN_ScreenState extends State<LogIN_Screen> {
+class _SignUp_ScreenState extends State<SignUp_Screen> {
   FocusNode _focusNode1 = FocusNode();
   FocusNode _focusNode2 = FocusNode();
+  FocusNode _focusNode3 = FocusNode();
 
   final email = TextEditingController();
   final password = TextEditingController();
+  final passwordConfirm = TextEditingController();
 
   @override
   void initState() {
@@ -23,6 +25,10 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
     });
     super.initState();
     _focusNode2.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+    _focusNode3.addListener(() {
       setState(() {});
     });
   }
@@ -47,13 +53,17 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
           ),
           textfield(password, _focusNode2, 'Password', Icons.password),
           SizedBox(
+            height: 10,
+          ),
+          textfield(passwordConfirm, _focusNode2, 'Password', Icons.password),
+          SizedBox(
             height: 8,
           ),
           account(),
           SizedBox(
             height: 20,
           ),
-          Login_bottom(),
+          Signup_bottom(),
         ]),
       )),
     );
@@ -66,14 +76,14 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            "Don't have an account ?",
+            "already have an account ?",
             style: TextStyle(color: Colors.grey[700], fontSize: 14),
           ),
           SizedBox(
             width: 5,
           ),
           Text(
-            'Sign Up',
+            'Login',
             style: TextStyle(
                 color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
           )
@@ -82,7 +92,7 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
     );
   }
 
-  Widget Login_bottom() {
+  Widget Signup_bottom() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Container(
@@ -92,7 +102,7 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
         decoration: BoxDecoration(
             color: custom_green, borderRadius: BorderRadius.circular(10)),
         child: Text(
-          'Login',
+          'Sign Up',
           style: TextStyle(color: Colors.white, fontSize: 23),
         ),
       ),
