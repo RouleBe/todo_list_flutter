@@ -83,10 +83,13 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           SizedBox(
             width: 5,
           ),
-          Text(
-            'Login',
-            style: TextStyle(
-                color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: widget.show,
+            child: Text(
+              'Login',
+              style: TextStyle(
+                  color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+            ),
           )
         ],
       ),

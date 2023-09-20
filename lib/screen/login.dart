@@ -3,7 +3,7 @@ import 'package:to_do_list/const/colors.dart';
 
 class LogIN_Screen extends StatefulWidget {
   final VoidCallback show;
-  LogIN_Screen(this.show,{super.key});
+  LogIN_Screen(this.show, {super.key});
 
   @override
   State<LogIN_Screen> createState() => _LogIN_ScreenState();
@@ -73,10 +73,15 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
           SizedBox(
             width: 5,
           ),
-          Text(
-            'Sign Up',
-            style: TextStyle(
-                color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: widget.show,
+            child: Text(
+              'Sign Up',
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold),
+            ),
           )
         ],
       ),
