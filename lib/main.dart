@@ -5,6 +5,7 @@ import 'package:to_do_list/auth/main_page.dart';
 import 'package:to_do_list/screen/SignUP.dart';
 import 'package:to_do_list/screen/home.dart';
 import 'package:to_do_list/screen/login.dart';
+import 'package:to_do_list/widgets/task_widgets.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Main_Page(),
+      home: Task_Widget(),
     );
   }
 }

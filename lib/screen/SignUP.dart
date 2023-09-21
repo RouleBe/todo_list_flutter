@@ -58,7 +58,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
             height: 10,
           ),
           textfield(
-              passwordConfirm, _focusNode2, 'Password Confirm', Icons.password),
+              passwordConfirm, _focusNode3, 'Password Confirm', Icons.password),
           SizedBox(
             height: 8,
           ),
