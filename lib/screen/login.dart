@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
+import 'package:to_do_list/data/auth_data.dart';
 
 class LogIN_Screen extends StatefulWidget {
   final VoidCallback show;
@@ -91,15 +92,20 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
   Widget Login_bottom() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        alignment: Alignment.center,
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-            color: custom_green, borderRadius: BorderRadius.circular(10)),
-        child: Text(
-          'Login',
-          style: TextStyle(color: Colors.white, fontSize: 23),
+      child: GestureDetector(
+        onTap: () {
+          AuthentificationRemote().login(email.text, password.text);
+        },
+        child: Container(
+          alignment: Alignment.center,
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: custom_green, borderRadius: BorderRadius.circular(10)),
+          child: Text(
+            'Login',
+            style: TextStyle(color: Colors.white, fontSize: 23),
+          ),
         ),
       ),
     );

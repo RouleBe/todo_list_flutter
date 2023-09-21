@@ -12,8 +12,8 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+    return SafeArea(
+      child: Text("Bonjour"),
     );
   }
 }

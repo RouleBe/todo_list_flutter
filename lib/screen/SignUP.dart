@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
+import 'package:to_do_list/data/auth_data.dart';
 
 class SignUp_Screen extends StatefulWidget {
   final VoidCallback show;
@@ -56,7 +57,8 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           SizedBox(
             height: 10,
           ),
-          textfield(passwordConfirm, _focusNode2, 'Password', Icons.password),
+          textfield(
+              passwordConfirm, _focusNode2, 'Password Confirm', Icons.password),
           SizedBox(
             height: 8,
           ),
@@ -88,7 +90,9 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
             child: Text(
               'Login',
               style: TextStyle(
-                  color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+                  color: Colors.blue,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold),
             ),
           )
         ],
@@ -99,15 +103,21 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
   Widget Signup_bottom() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        alignment: Alignment.center,
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-            color: custom_green, borderRadius: BorderRadius.circular(10)),
-        child: Text(
-          'Sign Up',
-          style: TextStyle(color: Colors.white, fontSize: 23),
+      child: GestureDetector(
+        onTap: () {
+          AuthentificationRemote()
+              .register(email.text, password.text, passwordConfirm.text);
+        },
+        child: Container(
+          alignment: Alignment.center,
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: custom_green, borderRadius: BorderRadius.circular(10)),
+          child: Text(
+            'Sign Up',
+            style: TextStyle(color: Colors.white, fontSize: 23),
+          ),
         ),
       ),
     );
