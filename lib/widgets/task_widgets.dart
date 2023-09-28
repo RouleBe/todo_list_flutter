@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
 import 'package:to_do_list/screen/edit_screen.dart';
 
+import '../model/notes_model.dart';
+
 class Task_Widget extends StatefulWidget {
-  const Task_Widget({super.key});
+  Note _note;
+  Task_Widget(this._note, {super.key});
 
   @override
   State<Task_Widget> createState() => _Task_WidgetState();
@@ -47,7 +50,7 @@ class _Task_WidgetState extends State<Task_Widget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'title',
+                          widget._note.title,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -64,7 +67,7 @@ class _Task_WidgetState extends State<Task_Widget> {
                     ),
                     SizedBox(height: 0),
                     Text(
-                      'subtitle',
+                      widget._note.subtitle,
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
@@ -161,7 +164,8 @@ class _Task_WidgetState extends State<Task_Widget> {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-            image: AssetImage('assets/0.png'), fit: BoxFit.cover),
+            image: AssetImage('assets/${widget._note.image}.png'),
+            fit: BoxFit.cover),
       ),
     );
   }

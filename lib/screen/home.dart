@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:to_do_list/const/colors.dart';
+import 'package:to_do_list/data/firestore.dart';
 import 'package:to_do_list/screen/add_note_screen.dart';
 
 import '../widgets/task_widgets.dart';
@@ -47,12 +50,24 @@ class _Home_ScreenState extends State<Home_Screen> {
               }
               return true;
             },
-            child: ListView.builder(
-              itemBuilder: ((context, index) {
-                return Task_Widget();
-              }),
-              itemCount: 10,
-            )),
+            child: StreamBuilder<QuerySnapshot>(
+                stream: Firestore_Datasource().stream(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    print(
+                        'current user : ${FirebaseAuth.instance.currentUser}');
+                    return CircularProgressIndicator();
+                  }
+                  final noteslist = Firestore_Datasource().getNotes(snapshot);
+                  return ListView.builder(
+                    itemBuilder: ((context, index) {
+                      final note = noteslist[index];
+                      print('number of notes ${noteslist.length}');
+                      return Task_Widget(note);
+                    }),
+                    itemCount: noteslist.length,
+                  );
+                })),
       ),
     );
   }

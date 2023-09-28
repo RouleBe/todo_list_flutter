@@ -156,7 +156,7 @@ class _LogIN_ScreenState extends State<LogIN_Screen> {
         height: 300,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/7.png'), fit: BoxFit.cover)),
+                image: AssetImage('assets/5.png'), fit: BoxFit.cover)),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
+import 'package:to_do_list/data/firestore.dart';
 
 class Add_Screen extends StatefulWidget {
   const Add_Screen({super.key});
@@ -47,6 +48,7 @@ class _Add_ScreenState extends State<Add_Screen> {
               minimumSize: Size(170, 48),
             ),
             onPressed: () {
+              Firestore_Datasource().AddNote(subtitle.text, title.text, indexx);
               Navigator.pop(context);
             },
             child: Text('add task'),
