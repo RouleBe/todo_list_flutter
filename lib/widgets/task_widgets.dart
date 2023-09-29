@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/const/colors.dart';
+import 'package:to_do_list/data/firestore.dart';
 import 'package:to_do_list/screen/edit_screen.dart';
 
 import '../model/notes_model.dart';
@@ -12,11 +13,10 @@ class Task_Widget extends StatefulWidget {
   State<Task_Widget> createState() => _Task_WidgetState();
 }
 
-bool isDone = false;
-
 class _Task_WidgetState extends State<Task_Widget> {
   @override
   Widget build(BuildContext context) {
+    bool isDone = widget._note.isDon;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: Container(
@@ -57,11 +57,14 @@ class _Task_WidgetState extends State<Task_Widget> {
                           ),
                         ),
                         Checkbox(
+                            activeColor: custom_green,
                             value: isDone,
                             onChanged: ((value) {
                               setState(() {
                                 isDone = !isDone;
                               });
+                              Firestore_Datasource()
+                                  .isdone(widget._note.id, isDone);
                             }))
                       ],
                     ),
